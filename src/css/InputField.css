@@ -1,0 +1,25 @@
+
+
+.form-group{
+    margin: 20px;
+    padding: 5px;
+    width: 45%;
+}
+
+input[type=text]{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  border-radius: 10px;
+}
+
+input[type=text]:focus {
+    border: 2px solid rgba(82, 104, 226, 0.5);
+    box-shadow: 0 0 10px 0 rgba(82, 104, 226, 0.5);
+}
+

@@ -92,3 +92,40 @@
         a:hover {
             text-decoration: underline;
         }
+
+    .cursor-pointer{
+      cursor: pointer;
+    }    
+
+
+    .personal-input-group{
+        display: flex;
+
+        justify-content: space-between;
+        margin-bottom: 20px;
+        flex-wrap:wrap;
+    }
+
+    .education-input-group{
+        display: flex;
+
+        margin-bottom: 20px;
+        justify-content: space-between;
+        flex-wrap:wrap;
+    }
+
+    .work-experience-input-group{
+        display: flex;
+     
+        justify-content: space-between;
+        margin-bottom: 20px;
+        flex-wrap:wrap;
+    }
+
+    .project-input-group{
+        display: flex;
+   
+        margin-bottom: 20px;
+        justify-content: space-between;
+        flex-wrap:wrap;
+    }

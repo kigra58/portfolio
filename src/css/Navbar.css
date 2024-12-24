@@ -1,0 +1,47 @@
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+    margin-bottom: 70px;
+}
+
+.navbar.light {
+    background-color: var(--bg-color-light);
+}
+
+.navbar.dark {
+    background-color: var(--bg-color-dark);
+}
+
+.navbar a {
+    text-decoration: none;
+    margin: 0 1rem;
+    font-size: 1rem;
+    color: inherit;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+.theme-toggle {
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    transition: transform 0.2s;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+.menu {
+    display: flex;
+}

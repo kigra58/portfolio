@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { API_URLS } from "../utils/constant";
+import { ENDPOINTS } from "../utils/constant";
 import {
   getAddress,
   getBasicDetails,
@@ -13,20 +13,19 @@ import {
   getSummary,
 } from "../services/userService";
 import moment from "moment";
-// import useApiCall from '../hooks/useApiCall';
+import { IAddress, IBasicDetails, IEducation, IExperience,IImages,IProfesionalLinks,IProjects,ISkills, IUserSummary } from "../utils/interface";
 
 const Profile: React.FC = () => {
   const [userDetails, setUserDetails] = useState({
-    DETAILS: [] as any,
-    PROFILE: [] as any,
-    ADDRESS: [] as any,
-    IMAGE: [] as any,
-    EXPERIENCE: [] as any,
-    SUMMARY: [] as any,
-    PROFESIONALLINKS: [] as any,
-    EDUCATION: [] as any,
-    PROJECTS: [] as any,
-    SKILLS: [] as any,
+    DETAILS: {} as IBasicDetails,
+    ADDRESS: [] as IAddress[],
+    IMAGE: [] as IImages[],
+    EXPERIENCE: [] as IExperience[],
+    SUMMARY: [] as IUserSummary[],
+    PROFESIONALLINKS: [] as IProfesionalLinks[],
+    EDUCATION: [] as IEducation[],
+    PROJECTS: [] as IProjects[],
+    SKILLS: [] as ISkills[],
   });
   const params = useParams() as { id: string };
   console.log(params?.id);
@@ -44,11 +43,11 @@ const Profile: React.FC = () => {
     ]);
 
     const temp: any = {};
-    for (const index in Object.keys(API_URLS)) {
-      if (!temp[Object.keys(API_URLS)[index]]) {
-        temp[Object.keys(API_URLS)[index]] = [] as any;
+    for (const index in Object.keys(ENDPOINTS)) {
+      if (!temp[Object.keys(ENDPOINTS)[index]]) {
+        temp[Object.keys(ENDPOINTS)[index]] = [] as any;
       }
-      temp[Object.keys(API_URLS)[index]] = response[index].data;
+      temp[Object.keys(ENDPOINTS)[index]] = response[index].data;
     }
 
     setUserDetails(temp);
@@ -69,7 +68,7 @@ const Profile: React.FC = () => {
       </div>
 
       <div className="section">
-        <h2>Personal Info</h2>
+        <h2>Personal </h2>
         {userDetails && userDetails.DETAILS && (
           <div className="contact-info">
             <p>Email: {userDetails?.DETAILS?.email}</p>
@@ -97,13 +96,7 @@ const Profile: React.FC = () => {
           {userDetails &&
             userDetails.EXPERIENCE.length > 0 &&
             userDetails.EXPERIENCE.map(
-              (ele: {
-                company: string;
-                title: string;
-                start_date: string;
-                end_date: string;
-                id:string
-              }) => {
+              (ele) => {
                 return (
                   <div className="job" key={ele.id}>
                     <h3>
@@ -125,14 +118,7 @@ const Profile: React.FC = () => {
           {userDetails &&
             userDetails.EDUCATION.length > 0 &&
             userDetails?.EDUCATION?.map(
-              (ele: {
-                course: string;
-                degree: string;
-                institute: string;
-                end_date: string;
-                start_date: string;
-                id:string
-              }) => {
+              (ele) => {
                 return (
                   <div className="education-item" key={ele.id} >
                     <h3>
@@ -155,7 +141,7 @@ const Profile: React.FC = () => {
           {userDetails &&
             userDetails.PROJECTS.length > 0 &&
             userDetails.PROJECTS.map(
-              (ele: { title: string; description: string;id:string}) => {
+              (ele) => {
                 return (
                   <div className="project" key={ele.id}>
                     <h3> {ele?.title} </h3>
@@ -173,24 +159,15 @@ const Profile: React.FC = () => {
           {userDetails &&
             userDetails.SKILLS.length > 0 &&
             userDetails.SKILLS.map(
-              (ele: { title: string; description: string ;id:string}) => {
+              (ele) => {
                 return (
                   <div className="skill" key={ele.id} >
                     <h3>{ele?.title}</h3>
-                    <p>{ele?.description}</p>
                   </div>
                 );
               }
             )}
         </div>
-      </div>
-
-      <div className="section">
-        <h2>Contact Us</h2>
-        <p>
-          If you would like to get in touch, please reach out via email or
-          phone.
-        </p>
       </div>
     </div>
   );

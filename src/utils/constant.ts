@@ -1,5 +1,5 @@
 
-export const API_URLS={
+export const ENDPOINTS={
   DETAILS:"users/:id",
   ADDRESS:"address",
   IMAGE:"images",
@@ -9,7 +9,16 @@ export const API_URLS={
   EDUCATION:"education",
   PROJECTS:"projects",
   SKILLS:"skills",
+}
 
+export const ROUTES={
+  PORTFOLIO:"portfolio",
+  REGISTER_PORTFOLIO:"register-portfolio",
+  ABOUT:"about",
+  CONTACT:"contact",
+  LOGIN:"login",
+  REGISTER:"signup",
+  NOTFOUND:"*",
 }
 
 

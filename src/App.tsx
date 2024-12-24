@@ -1,13 +1,9 @@
 import React from "react";
+import PublicRoutes from "./components/PublicRoute";
 import "./App.css";
-import Profile from "./components/Profile";
 
-const App: React.FC = () => {
-  return (
-    
-      <Profile />
+const App: React.FC = () => 
+  <PublicRoutes />;
 
-  );
-};
 
 export default App;

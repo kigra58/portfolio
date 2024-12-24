@@ -1,4 +1,4 @@
-interface Address{
+export interface IAddress{
     id:number
     city:string,
     state:string,
@@ -7,30 +7,52 @@ interface Address{
     user_id:number
 }
 
-interface ProfesionalLinks{
+export interface IImages {
+    id: number;
+    url: string;
+    user_id: number;
+  }
+  
+
+export interface IProfesionalLinks{
     id:number
     title:string
     url:string,
     user_id:string
 }
 
-export interface Experience{
+export interface IExperience{
     id:number
     user_id:number
     description:string,
-    profile:string,
+    company:string,
+    title:string,
     start_date:Date;
     end_date:Date;
     location:string;    
 }
 
-interface Skills{
+export interface IBasicDetails {
+    id: number;
+    name: string;
+    email: string;
+    phone: string;
+    profile:string;
+  }
+
+export interface ISkills{
     id:number;
     title:string;
     level:number;
 }
 
-interface Education{
+export interface IUserSummary {
+    id: number;
+    title: string;
+    user_id: string; 
+  }
+
+export interface IEducation{
     id:number;
     user_id:number;
     institute:string;
@@ -40,7 +62,7 @@ interface Education{
     degree:string;
 }
 
-interface Projects{
+export interface IProjects{
     id:number;
     title:string
     description:string;
@@ -49,7 +71,7 @@ interface Projects{
     user_id:number
 }
 
-export interface Template{
+export interface ITemplate{
     id:number
     type:string
 }
@@ -61,16 +83,16 @@ export interface IUser{
     username:string,
     email:string,
     phone:string,
-    address: Address,
+    address: IAddress,
     profile:string,
     image:string,
-    profesional:ProfesionalLinks[],
+    profesional:IProfesionalLinks[],
     summary:string,
-    profesional_links:ProfesionalLinks[]
-    education:Education[],
-    experience:Experience[],
-    template:Template[],
-    project:Projects[],
-    skills:Skills[]
+    profesional_links:IProfesionalLinks[]
+    education:IEducation[],
+    experience:IExperience[],
+    template:ITemplate[],
+    project:IProjects[],
+    skills:ISkills[]
 }
 
