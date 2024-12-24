@@ -45,10 +45,10 @@ const Profile: React.FC = () => {
       getSkills(userId),
     ]);
 
-    const temp: any = {};
+    const temp:any = {};
     for (const index in Object.keys(ENDPOINTS)) {
       if (!temp[Object.keys(ENDPOINTS)[index]]) {
-        temp[Object.keys(ENDPOINTS)[index]] = [] as any;
+        temp[Object.keys(ENDPOINTS)[index]] = [];
       }
       temp[Object.keys(ENDPOINTS)[index]] = response[index].data;
     }

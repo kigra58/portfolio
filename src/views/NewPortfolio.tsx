@@ -5,7 +5,7 @@ import useForm from "../hooks/useForm";
 
 const NewPortfolio: React.FC = () => {
   
-  const {formData,setFormData,onChangeHandler}=useForm({
+  const {formData,onChangeHandler}=useForm({
     personal:{
       fiestName: "",
       lastName: "",
@@ -128,6 +128,7 @@ const NewPortfolio: React.FC = () => {
             <div className="work-experience-input-group">
             {
               (formData?.workExperience as []).map((ele)=>{
+                console.log(ele)
                 return (
                   <>
                   <InputField
