@@ -1,8 +1,47 @@
 import React from "react";
 import InputField from "../components/InputField";
 import ProfileImage from "../assets/profile-image.avif"
+import useForm from "../hooks/useForm";
 
 const NewPortfolio: React.FC = () => {
+  
+  const {formData,setFormData,onChangeHandler}=useForm({
+    personal:{
+      fiestName: "",
+      lastName: "",
+      profile:"",
+      phone: "",
+      email:""
+    },
+    address:[{
+      city: "",
+      state: "",
+      zip: "",
+    }],
+    workExperience:[ {
+      company: "",
+      position: "",
+      duration: "",
+      // achievements: "",
+    }],
+    education: [{
+      institution: "",
+      degree: "",
+      duration: "",
+    }],
+    projects:[{
+      title: "",
+      description: "",
+      url: "",
+      technology: "",
+    }],
+    skills:[{
+       title:"",
+       level:""
+    }]
+
+  })
+
   return (
     <div className="container">
       <div className="header">
@@ -16,22 +55,23 @@ const NewPortfolio: React.FC = () => {
             <div className="personal-input-group">
             <InputField
               type="text"
-              name="name"
+              name="firtName"
               placeholder="First Name"
+              onChange={(e)=>onChangeHandler(e)}
               required
-              value=""
+              value={formData?.name as string}
             />
 
             <InputField
               type="text"
-              name="name"
+              name="lastName"
               placeholder="Last Name"
               required
-              value=""
+              value={formData?.name as string}
             />
             <InputField
               type="text"
-              name="name"
+              name="profile"
               placeholder="Profile"
               required
               value=""
@@ -39,7 +79,7 @@ const NewPortfolio: React.FC = () => {
 
             <InputField
               type="text"
-              name="name"
+              name="email"
               placeholder="Email Address"
               required
               value=""
@@ -47,7 +87,7 @@ const NewPortfolio: React.FC = () => {
 
             <InputField
               type="text"
-              name="name"
+              name="location"
               placeholder="Location"
               required
               value=""
@@ -55,7 +95,7 @@ const NewPortfolio: React.FC = () => {
 
             <InputField
               type="text"
-              name="name"
+              name="phone"
               placeholder="Phone"
               required
               value=""
@@ -63,7 +103,7 @@ const NewPortfolio: React.FC = () => {
 
             <InputField
               type="text"
-              name="name"
+              name="title"
               placeholder="Title"
               required
               value=""
@@ -71,7 +111,7 @@ const NewPortfolio: React.FC = () => {
 
             <InputField
               type="text"
-              name="name"
+              name="url"
               placeholder="URL"
               required
               value=""
@@ -86,43 +126,54 @@ const NewPortfolio: React.FC = () => {
         <div className="work-experience">
           <div className="job">
             <div className="work-experience-input-group">
-              <InputField
-                type="text"
-                name="name"
-                placeholder="Title"
-                required
-                value=""
-              />
-              <InputField
-                type="text"
-                name="name"
-                placeholder="Company"
-                required
-                value=""
-              />
-              <InputField
-                type="text"
-                name="name"
-                placeholder="Location"
-                required
-                value=""
-              />
+            {
+              (formData?.workExperience as []).map((ele)=>{
+                return (
+                  <>
+                  <InputField
+                    type="text"
+                    name="name"
+                    placeholder="Title"
+                    required
+                    value=""
+                  />
+                  <InputField
+                    type="text"
+                    name="name"
+                    placeholder="Company"
+                    required
+                    value=""
+                  />
+                  <InputField
+                    type="text"
+                    name="name"
+                    placeholder="Location"
+                    required
+                    value=""
+                  />
+    
+                  <InputField
+                    type="text"
+                    name="name"
+                    placeholder="Start Date"
+                    required
+                    value=""
+                  />
+    
+                  <InputField
+                    type="text"
+                    name="name"
+                    placeholder="End Date "
+                    required
+                    value=""
+                  />
+                  
+                  </>
+                )
+              })
+            }
+                
 
-              <InputField
-                type="text"
-                name="name"
-                placeholder="Start Date"
-                required
-                value=""
-              />
-
-              <InputField
-                type="text"
-                name="name"
-                placeholder="End Date "
-                required
-                value=""
-              />
             </div>
           </div>
         </div>
@@ -197,13 +248,23 @@ const NewPortfolio: React.FC = () => {
         <h2>Skills</h2>
         <div className="skills">
           <div className="skill">
+            <div className="project-input-group">
             <InputField
               type="text"
               name="name"
-              placeholder="Skills"
+              placeholder="Title"
               required
               value=""
             />
+            <InputField
+              type="text"
+              name="name"
+              placeholder="Level"
+              required
+              value=""
+            />
+
+            </div>
           </div>
         </div>
       </div>

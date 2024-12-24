@@ -8,7 +8,10 @@ interface IProps{
     name: string;
     required?: boolean;
     value: string;
-    onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
+    onChange?: (  e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
+      | React.ChangeEvent<HTMLSelectElement>) => void;
     // onBlur?: (e: React.FormEvent<HTMLInputElement>) => void;
     // onFocus?: (e: React.FormEvent<HTMLInputElement>) => void;
     className?: string;

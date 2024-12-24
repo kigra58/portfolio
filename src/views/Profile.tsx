@@ -27,6 +27,9 @@ const Profile: React.FC = () => {
     PROJECTS: [] as IProjects[],
     SKILLS: [] as ISkills[],
   });
+
+
+
   const params = useParams() as { id: string };
   console.log(params?.id);
   const gettingUserDetails = async (userId: string) => {

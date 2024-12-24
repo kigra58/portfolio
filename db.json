@@ -5,13 +5,15 @@
         "id":1,
         "name":"John Doe",
         "email":"johndoe@example.com",
-        "phone":"123-456-7890"
+        "phone":"123-456-7890",
+        "profile":"Software Engineer"
     },
     {
         "id":2,
         "name":"andrew tade",
         "email":"andrew@example.com",
-        "phone":"123-456-7890"
+        "phone":"123-456-7890",
+        "profile":"Software Engineer"
     }
    ],
   
