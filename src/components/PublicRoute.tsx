@@ -22,7 +22,7 @@ const PublicRoutes:React.FC=()=>{
     <Routes>
       {/* <Route path={ROUTES.LOGIN}  element={isLogin ?  
       <Navigate to={ROUTES} /> : <Login/>}></Route>  */}
-      <Route path={ROUTES.PORTFOLIO} element={<Profile />}></Route> 
+      <Route path={ROUTES.HOME} element={<Profile />}></Route> 
       <Route path={ROUTES.REGISTER_PORTFOLIO} element={<NewPortfolio />}></Route>
       <Route path={ROUTES.CONTACT} element={<ContactUs />}></Route>
 

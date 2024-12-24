@@ -65,7 +65,8 @@ const Profile: React.FC = () => {
   return (
     <div className="container">
       <div className="header">
-        <img src={userDetails?.IMAGE[0]?.url} alt="Profile Image" className="profile-image" />
+        <img src={userDetails?.IMAGE[0]?.url}
+         alt="Profile Image" className="profile-image" />
         <h1>{userDetails?.DETAILS?.name}</h1>
         <p>{userDetails?.DETAILS?.profile}</p>
       </div>

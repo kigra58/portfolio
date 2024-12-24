@@ -1,6 +1,8 @@
 import React from 'react'
 import "../css/Navbar.css";
 import ThemeChanger from './ThemeChanger';
+import { NavLink } from 'react-router-dom';
+import { ROUTES } from '../utils/constant';
 const Navbar:React.FC = () => {
   
 
@@ -12,10 +14,11 @@ const Navbar:React.FC = () => {
             {/* <a href="#">Brand</a> */}
         </div>
         <div className="menu">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Contact</a>
+            <NavLink to={ROUTES.HOME}>Home</NavLink>
+            <NavLink to={ROUTES.REGISTER_PORTFOLIO}> New Portfolio </NavLink>
+            <NavLink to="#">About</NavLink>
+            <NavLink to="#">Services</NavLink>
+            <NavLink to={ROUTES.CONTACT} >Contact</NavLink>
         </div>
         <ThemeChanger/>
     </nav>

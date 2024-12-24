@@ -12,12 +12,13 @@ export const ENDPOINTS={
 }
 
 export const ROUTES={
+  HOME:"/",
   PORTFOLIO:"portfolio",
   REGISTER_PORTFOLIO:"register-portfolio",
   ABOUT:"about",
   CONTACT:"contact",
   LOGIN:"login",
-  REGISTER:"signup",
+  SIGNUP:"signup",
   NOTFOUND:"*",
 }
 
