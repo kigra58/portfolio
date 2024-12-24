@@ -23,35 +23,49 @@
       "user_id": 1
       }
    ],
-
-    "profile": [
-        {
-            "description":"Software Engineer with 5 years of experience in full-stack development.",
-            "user_id":"1"
-        }
-    ],
     "images": [
         {
+            "id":1 ,
+            "url":"https://www.pexels.com/photo/man-with-beard-16100263/",
+            "user_id":1
+        },
+        {
+            "id":2,
             "url":"https://github.com/johndoe",
-            "user_id":"1"
+            "user_id":2
         }
     ],
-    "profesional": [
+    "experience": [
       {
         "id": 1,
-        "title": "LinkedIn",
-        "url": "https://linkedin.com/in/johndoe",
-        "user_id": "1"
+        "company": "Microsoft Corporation",
+        "title": "Software Engineer I",
+        "description":"Software Engineer with 5 years of experience in full-stack development.",
+        "user_id": "2",
+        "start_date": "2019-09-01T00:00:00.000Z",
+        "end_date": "2021-06-01T00:00:00.000Z"
       },
       {
         "id": 2,
-        "title": "GitHub",
-        "url": "https://github.com/johndoe",
-        "user_id": "1"
+        "company": "Facebook Corporation",
+        "title": "Software Engineer II",
+        "description":"Software Engineer with 5 years of experience in full-stack development.",
+        "user_id": "1",
+        "start_date": "2019-09-01T00:00:00.000Z",
+        "end_date": "2021-06-01T00:00:00.000Z"
+      },
+      {
+        "id": 3,
+        "company": "Google Corporation",
+        "title": "Software Engineer III",
+        "description":"Software Engineer with 5 years of experience in full-stack development.",
+        "user_id": "1",
+        "start_date": "2019-09-01T00:00:00.000Z",
+        "end_date": "2021-06-01T00:00:00.000Z"
       }
     ],
     "summary": [
-        {
+        {   "id":1,
             "title":"Passionate developer skilled in building scalable and efficient applications.",
             "user_id":"1"
         }

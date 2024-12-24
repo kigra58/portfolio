@@ -1,13 +1,12 @@
 
 export const API_URLS={
   DETAILS:"users/:id",
-  PROFILE:"profile",
   ADDRESS:"address",
   IMAGE:"images",
-  PROFESIONAL:"profesional",
+  EXPERIENCE:"experience",
   SUMMARY:"summary",
   PROFESIONALLINKS:"profesional_links",
-  EDUCTION:"education",
+  EDUCATION:"education",
   PROJECTS:"projects",
   SKILLS:"skills",
 

@@ -20,15 +20,12 @@ export const getAddress=(userId:string):Promise<IResponse> =>{
 };
 
 
-export const getProfile=(userId:string):Promise<IResponse> =>{
-  return axiosInstance.get(API_URLS.PROFILE.concat(`?user_id=${userId}`));
-};
 
 export const getProfileImage=(userId:string):Promise<IResponse> =>{
   return axiosInstance.get(API_URLS.IMAGE.concat(`?user_id=${userId}`));
 };
 export const getProfestionDetails=(userId:string):Promise<IResponse> =>{
-  return axiosInstance.get(API_URLS.PROFESIONAL.concat(`?user_id=${userId}`));
+  return axiosInstance.get(API_URLS.EXPERIENCE.concat(`?user_id=${userId}`));
 };
 
 export const getSummary=(userId:string):Promise<IResponse> =>{
@@ -41,7 +38,7 @@ export const getProfesionalLinks=(userId:string):Promise<IResponse> =>{
 
 
 export const getEducation=(userId:string):Promise<IResponse> =>{
-  return axiosInstance.get(API_URLS.EDUCTION.concat(`?user_id=${userId}`));
+  return axiosInstance.get(API_URLS.EDUCATION.concat(`?user_id=${userId}`));
 };
 
 export const getProjectDetails=(userId:string):Promise<IResponse> =>{
