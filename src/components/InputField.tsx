@@ -1,5 +1,6 @@
 import React from "react";
 import  "../css/InputField.css";
+import {Controller,Control} from "react-hook-form"
 
 interface IProps{
     type: string;
@@ -8,6 +9,7 @@ interface IProps{
     name: string;
     required?: boolean;
     value: string;
+    control:Control;
     onChange?: (  e:
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLTextAreaElement>
@@ -26,17 +28,25 @@ const InputField: React.FC<IProps> = ({
     value,
     onChange,
     className,
-
+    control
 }) => {
   return (
     <div className="form-group">
-      <input 
-       placeholder={placeholder} 
-       onChange={(e)=>onChange && onChange(e)}
-       required={required}
-       value={value}
-       className={className}
-       name={name} type={type} />
+      <Controller 
+       render={({ field }) => (
+        <input
+          {...field}
+          placeholder={placeholder} 
+          onChange={(e)=>onChange && onChange(e)}
+          required={required}
+          value={value}
+          className={className}
+          type={type} 
+          />
+        )}
+        name={name}
+        control={control}
+      />
     </div>
   );
 };

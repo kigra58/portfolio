@@ -1,7 +1,9 @@
 import React from "react";
 import InputField from "../components/InputField";
+import { useForm } from "react-hook-form";
 
 const ContactUs: React.FC = () => {
+  const { control } = useForm();
   return (
     <div className="container">
       <div className="section">
@@ -15,6 +17,7 @@ const ContactUs: React.FC = () => {
                 placeholder="Name"
                 required
                 value=""
+                control={control}
               />
               <InputField
                 type="text"
@@ -22,6 +25,7 @@ const ContactUs: React.FC = () => {
                 placeholder="Email"
                 required
                 value=""
+                control={control}
               />
               <InputField
                 type="text"
@@ -29,6 +33,7 @@ const ContactUs: React.FC = () => {
                 placeholder="Description"
                 required
                 value=""
+                control={control}
               />
             </div>
           </div>

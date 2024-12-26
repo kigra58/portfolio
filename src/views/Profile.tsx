@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ENDPOINTS } from "../utils/constant";
+import ProfileImage from "../assets/profile-image.avif"
+import moment from "moment";
+
 import {
   getAddress,
   getBasicDetails,
@@ -12,8 +15,14 @@ import {
   getSkills,
   getSummary,
 } from "../services/userService";
-import moment from "moment";
-import { IAddress, IBasicDetails, IEducation, IExperience,IImages,IProfesionalLinks,IProjects,ISkills, IUserSummary } from "../utils/interface";
+import { IAddress, 
+  IBasicDetails, 
+  IEducation, 
+  IExperience,
+  IImages,
+  IProfesionalLinks,
+  IProjects,ISkills,
+  IUserSummary } from "../utils/interface";
 
 const Profile: React.FC = () => {
   const [userDetails, setUserDetails] = useState({
@@ -27,6 +36,7 @@ const Profile: React.FC = () => {
     PROJECTS: [] as IProjects[],
     SKILLS: [] as ISkills[],
   });
+  
 
 
 
@@ -66,6 +76,9 @@ const Profile: React.FC = () => {
     <div className="container">
       <div className="header">
         <img src={userDetails?.IMAGE[0]?.url}
+           onError={(ev) => {
+            (ev.target as HTMLInputElement).src =ProfileImage
+          }}
          alt="Profile Image" className="profile-image" />
         <h1>{userDetails?.DETAILS?.name}</h1>
         <p>{userDetails?.DETAILS?.profile}</p>

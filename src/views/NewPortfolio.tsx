@@ -1,46 +1,69 @@
-import React from "react";
+import React, { useEffect } from "react";
 import InputField from "../components/InputField";
-import ProfileImage from "../assets/profile-image.avif"
-import useForm from "../hooks/useForm";
+import ProfileImage from "../assets/profile-image.avif";
+import { useFieldArray, useForm } from "react-hook-form";
 
 const NewPortfolio: React.FC = () => {
-  
-  const {formData,onChangeHandler}=useForm({
-    personal:{
-      fiestName: "",
-      lastName: "",
-      profile:"",
-      phone: "",
-      email:""
-    },
-    address:[{
-      city: "",
-      state: "",
-      zip: "",
-    }],
-    workExperience:[ {
-      company: "",
-      position: "",
-      duration: "",
-      // achievements: "",
-    }],
-    education: [{
-      institution: "",
-      degree: "",
-      duration: "",
-    }],
-    projects:[{
-      title: "",
-      description: "",
-      url: "",
-      technology: "",
-    }],
-    skills:[{
-       title:"",
-       level:""
-    }]
+  const { control } = useForm({
+    mode: "onChange",
+    reValidateMode: "onBlur",
+  });
 
-  })
+  const {
+    fields: workExperienceFields,
+    insert: insertWorkExperienceFields,
+    append: appendWorkExperienceFields,
+    remove: removeWorkExperienceFields,
+  } = useFieldArray({
+    name: "workExperience",
+    control,
+  });
+
+  const {
+    fields: educationFields,
+    insert: insertEducationFields,
+    append: appendEducationFields,
+    remove: removeEducationFields,
+  } = useFieldArray({
+    name: "education",
+    control,
+  });
+  const {
+    fields: skillsFields,
+    insert: insertSkillsFields,
+    append: appendSkillsFields,
+    remove: removeSkillsFields,
+  } = useFieldArray({
+    name: "skills",
+    control,
+  });
+
+  const {
+    fields: projectsFields,
+    insert: insertProjectsFields,
+    append: appendProjectsFields,
+    remove: removeProjectsFields,
+  } = useFieldArray({
+    name: "projects",
+    control,
+  });
+  const {
+    fields: profesionalLinksFields,
+    insert: insertprofesionalLinksFields,
+    append: appendProfesionalLinksFields,
+    remove: removeProfesionalLinksFields,
+  } = useFieldArray({
+    name: "profesionalLinks",
+    control,
+  });
+
+  useEffect(() => {
+    insertWorkExperienceFields(0, "");
+    insertEducationFields(0, "");
+    insertprofesionalLinksFields(0, "");
+    insertSkillsFields(0, "");
+    insertProjectsFields(0, "");
+  }, []);
 
   return (
     <div className="container">
@@ -53,70 +76,117 @@ const NewPortfolio: React.FC = () => {
         <div className="skills">
           <div className="skill">
             <div className="personal-input-group">
-            <InputField
-              type="text"
-              name="firtName"
-              placeholder="First Name"
-              onChange={(e)=>onChangeHandler(e)}
-              required
-              value={formData?.name as string}
-            />
+              <InputField
+                type="text"
+                name="firtName"
+                placeholder="First Name"
+                required
+                value=""
+                control={control}
+              />
 
-            <InputField
-              type="text"
-              name="lastName"
-              placeholder="Last Name"
-              required
-              value={formData?.name as string}
-            />
-            <InputField
-              type="text"
-              name="profile"
-              placeholder="Profile"
-              required
-              value=""
-            />
+              <InputField
+                type="text"
+                name="lastName"
+                placeholder="Last Name"
+                required
+                value=""
+                control={control}
+              />
+              <InputField
+                type="text"
+                name="profile"
+                placeholder="Profile"
+                required
+                value=""
+                control={control}
+              />
 
-            <InputField
-              type="text"
-              name="email"
-              placeholder="Email Address"
-              required
-              value=""
-            />
+              <InputField
+                type="text"
+                name="email"
+                placeholder="Email Address"
+                required
+                value=""
+                control={control}
+              />
 
-            <InputField
-              type="text"
-              name="location"
-              placeholder="Location"
-              required
-              value=""
-            />
+              <InputField
+                type="text"
+                name="location"
+                placeholder="Location"
+                required
+                value=""
+                control={control}
+              />
 
-            <InputField
-              type="text"
-              name="phone"
-              placeholder="Phone"
-              required
-              value=""
-            />
+              <InputField
+                type="text"
+                name="phone"
+                placeholder="Phone"
+                required
+                value=""
+                control={control}
+              />
 
-            <InputField
-              type="text"
-              name="title"
-              placeholder="Title"
-              required
-              value=""
-            />
+              <InputField
+                type="text"
+                name="title"
+                placeholder="Title"
+                required
+                value=""
+                control={control}
+              />
 
-            <InputField
-              type="text"
-              name="url"
-              placeholder="URL"
-              required
-              value=""
-            />
-             </div>
+              {profesionalLinksFields.map((_, index) => {
+                return (
+                  <>
+                    <InputField
+                      type="text"
+                      name={`workExperience${[index]}["title]`}
+                      placeholder="URL"
+                      required
+                      value=""
+                      control={control}
+                    />
+                    <InputField
+                      type="text"
+                      name={`workExperience${[index]}["url]`}
+                      placeholder="URL"
+                      required
+                      value=""
+                      control={control}
+                    />
+                  </>
+                );
+              })}
+            </div>
+            <button
+                type="button"
+                className="fancy-button"
+                onClick={() => {
+                  appendProfesionalLinksFields({
+                    title: undefined,
+                    company: undefined,
+                    location: undefined,
+                    startDate: undefined,
+                    endDate: undefined,
+                  });
+                }}
+              >
+                {" "}
+                Add New
+              </button>
+              <button
+                type="button"
+                className="fancy-button"
+                onClick={() => {
+                  removeProfesionalLinksFields();
+                }}
+              >
+                {" "}
+                REMOVE
+              </button>
           </div>
         </div>
       </div>
@@ -126,56 +196,80 @@ const NewPortfolio: React.FC = () => {
         <div className="work-experience">
           <div className="job">
             <div className="work-experience-input-group">
-            {
-              (formData?.workExperience as []).map((ele)=>{
-                console.log(ele)
+              {workExperienceFields.map((_, index) => {
                 return (
                   <>
-                  <InputField
-                    type="text"
-                    name="name"
-                    placeholder="Title"
-                    required
-                    value=""
-                  />
-                  <InputField
-                    type="text"
-                    name="name"
-                    placeholder="Company"
-                    required
-                    value=""
-                  />
-                  <InputField
-                    type="text"
-                    name="name"
-                    placeholder="Location"
-                    required
-                    value=""
-                  />
-    
-                  <InputField
-                    type="text"
-                    name="name"
-                    placeholder="Start Date"
-                    required
-                    value=""
-                  />
-    
-                  <InputField
-                    type="text"
-                    name="name"
-                    placeholder="End Date "
-                    required
-                    value=""
-                  />
-                  
-                  </>
-                )
-              })
-            }
-                
+                    <InputField
+                      type="text"
+                      name={`workExperience${[index]}["title]`}
+                      placeholder="Title"
+                      required
+                      value=""
+                      control={control}
+                    />
+                    <InputField
+                      type="text"
+                      name={`workExperience${[index]}["company]`}
+                      placeholder="Company"
+                      required
+                      value=""
+                      control={control}
+                    />
+                    <InputField
+                      type="text"
+                      name={`workExperience${[index]}["location]`}
+                      placeholder="Location"
+                      required
+                      value=""
+                      control={control}
+                    />
 
+                    <InputField
+                      type="text"
+                      name={`workExperience${[index]}["startDate]`}
+                      required
+                      value=""
+                      control={control}
+                    />
+
+                    <InputField
+                      type="text"
+                      name={`workExperience${[index]}["endDate]`}
+                      placeholder="End Date "
+                      required
+                      value=""
+                      control={control}
+                    />
+                  </>
+                );
+              })}
             </div>
+            <button
+              type="button"
+              className="fancy-button"
+              onClick={() => {
+                appendWorkExperienceFields({
+                  title: undefined,
+                  company: undefined,
+                  location: undefined,
+                  startDate: undefined,
+                  endDate: undefined,
+                });
+              }}
+            >
+              {" "}
+              Add New
+            </button>
+            <button
+              type="button"
+              className="fancy-button"
+              onClick={() => {
+                removeWorkExperienceFields();
+              }}
+            >
+              {" "}
+              REMOVE
+            </button>
           </div>
         </div>
       </div>
@@ -185,38 +279,74 @@ const NewPortfolio: React.FC = () => {
         <div className="education">
           <div className="education-item">
             <div className="education-input-group">
-              <InputField
-                type="text"
-                name="name"
-                placeholder="Course"
-                required
-                value=""
-              />
+              {educationFields.map((_, index) => {
+                return (
+                  <>
+                    <InputField
+                      type="text"
+                      name={`workExperience${[index]}["course]`}
+                      placeholder="Course"
+                      required
+                      value=""
+                      control={control}
+                    />
 
-              <InputField
-                type="text"
-                name="name"
-                placeholder="Institute"
-                required
-                value=""
-              />
+                    <InputField
+                      type="text"
+                      name={`workExperience${[index]}["Institute]`}
+                      placeholder="Institute"
+                      required
+                      value=""
+                      control={control}
+                    />
 
-              <InputField
-                type="text"
-                name="name"
-                placeholder="Start Date"
-                required
-                value=""
-              />
+                    <InputField
+                      type="text"
+                      name={`workExperience${[index]}["startDate]`}
+                      placeholder="Start Date"
+                      required
+                      value=""
+                      control={control}
+                    />
 
-              <InputField
-                type="text"
-                name="name"
-                placeholder="End Date"
-                required
-                value=""
-              />
+                    <InputField
+                      type="text"
+                      name={`workExperience${[index]}["endDate]`}
+                      placeholder="End Date"
+                      required
+                      value=""
+                      control={control}
+                    />
+                  </>
+                );
+              })}
             </div>
+            <button
+              type="button"
+              className="fancy-button"
+              onClick={() => {
+                appendEducationFields({
+                  title: undefined,
+                  company: undefined,
+                  location: undefined,
+                  startDate: undefined,
+                  endDate: undefined,
+                });
+              }}
+            >
+              {" "}
+              Add New
+            </button>
+            <button
+              type="button"
+              className="fancy-button"
+              onClick={() => {
+                removeEducationFields();
+              }}
+            >
+              {" "}
+              REMOVE
+            </button>
           </div>
         </div>
       </div>
@@ -226,21 +356,55 @@ const NewPortfolio: React.FC = () => {
         <div className="projects">
           <div className="project">
             <div className="project-input-group">
-              <InputField
-                type="text"
-                name="name"
-                placeholder="Title"
-                required
-                value=""
-              />
-              <InputField
-                type="text"
-                name="name"
-                placeholder="Description"
-                required
-                value=""
-              />
+              {projectsFields.map((_, index) => {
+                return (
+                  <>
+                    <InputField
+                      type="text"
+                      name={`skills${[index]}["title]`}
+                      placeholder="Title"
+                      required
+                      value=""
+                      control={control}
+                    />
+                    <InputField
+                      type="text"
+                      name={`skills${[index]}["description]`}
+                      placeholder="Description"
+                      required
+                      value=""
+                      control={control}
+                    />
+                  </>
+                );
+              })}
             </div>
+            <button
+              type="button"
+              className="fancy-button"
+              onClick={() => {
+                appendProjectsFields({
+                  title: undefined,
+                  company: undefined,
+                  location: undefined,
+                  startDate: undefined,
+                  endDate: undefined,
+                });
+              }}
+            >
+              {" "}
+              Add New
+            </button>
+            <button
+              type="button"
+              className="fancy-button"
+              onClick={() => {
+                removeProjectsFields();
+              }}
+            >
+              {" "}
+              REMOVE
+            </button>
           </div>
         </div>
       </div>
@@ -250,22 +414,55 @@ const NewPortfolio: React.FC = () => {
         <div className="skills">
           <div className="skill">
             <div className="project-input-group">
-            <InputField
-              type="text"
-              name="name"
-              placeholder="Title"
-              required
-              value=""
-            />
-            <InputField
-              type="text"
-              name="name"
-              placeholder="Level"
-              required
-              value=""
-            />
-
+              {skillsFields.map((_, index) => {
+                return (
+                  <>
+                    <InputField
+                      type="text"
+                      name={`skills${[index]}["title]`}
+                      placeholder="Title"
+                      required
+                      value=""
+                      control={control}
+                    />
+                    <InputField
+                      type="text"
+                      name={`skills${[index]}["level]`}
+                      placeholder="Level"
+                      required
+                      value=""
+                      control={control}
+                    />
+                  </>
+                );
+              })}
             </div>
+            <button
+              type="button"
+              className="fancy-button"
+              onClick={() => {
+                appendSkillsFields({
+                  title: undefined,
+                  company: undefined,
+                  location: undefined,
+                  startDate: undefined,
+                  endDate: undefined,
+                });
+              }}
+            >
+              {" "}
+              Add New
+            </button>
+            <button
+              type="button"
+              className="fancy-button"
+              onClick={() => {
+                removeSkillsFields();
+              }}
+            >
+              {" "}
+              REMOVE
+            </button>
           </div>
         </div>
       </div>
