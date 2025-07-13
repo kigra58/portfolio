@@ -14,11 +14,11 @@ const Navbar:React.FC = () => {
             {/* <a href="#">Brand</a> */}
         </div>
         <div className="menu">
-            <NavLink to={ROUTES.HOME}>Home</NavLink>
-            <NavLink to={ROUTES.REGISTER_PORTFOLIO}> New Portfolio </NavLink>
+            {/* <NavLink to={ROUTES.HOME}></NavLink> */}
+            {/* <NavLink to={ROUTES.REGISTER_PORTFOLIO}> New Portfolio </NavLink>
             <NavLink to="#">About</NavLink>
             <NavLink to="#">Services</NavLink>
-            <NavLink to={ROUTES.CONTACT} >Contact</NavLink>
+            <NavLink to={ROUTES.CONTACT} >Contact</NavLink> */}
         </div>
         <ThemeChanger/>
     </nav>

@@ -23,13 +23,13 @@ const PublicRoutes:React.FC=()=>{
       {/* <Route path={ROUTES.LOGIN}  element={isLogin ?  
       <Navigate to={ROUTES} /> : <Login/>}></Route>  */}
       <Route path={ROUTES.HOME} element={<Profile />}></Route> 
-      <Route path={ROUTES.REGISTER_PORTFOLIO} element={<NewPortfolio />}></Route>
-      <Route path={ROUTES.CONTACT} element={<ContactUs />}></Route>
+      {/* <Route path={ROUTES.REGISTER_PORTFOLIO} element={<NewPortfolio />}></Route> */}
+      {/* <Route path={ROUTES.CONTACT} element={<ContactUs />}></Route> */}
 
 
       <Route element={<ProtectedRoute isLogin={isLogin} />}>
         <Route path={ROUTES.NOTFOUND} element={<NotFound />}></Route>           
-        <Route path={ROUTES.REGISTER_PORTFOLIO} element={<NewPortfolio />}></Route>
+        {/* <Route path={ROUTES.REGISTER_PORTFOLIO} element={<NewPortfolio />}></Route> */}
 
          {/* ADMIN ROUTE */}
       </Route>
