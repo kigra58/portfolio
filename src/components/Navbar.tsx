@@ -1,8 +1,8 @@
 import React from 'react'
 import "../css/Navbar.css";
 import ThemeChanger from './ThemeChanger';
-import { NavLink } from 'react-router-dom';
-import { ROUTES } from '../utils/constant';
+// import { NavLink } from 'react-router-dom';
+// import { ROUTES } from '../utils/constant';
 const Navbar:React.FC = () => {
   
 
