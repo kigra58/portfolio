@@ -5,8 +5,8 @@ import Navbar from './Navbar';
 import NotFound from './NotFound';
 import Profile from '../views/Profile';
 import { ROUTES } from '../utils/constant';
-import NewPortfolio from '../views/NewPortfolio';
-import ContactUs from '../views/ContactUs';
+// import NewPortfolio from '../views/NewPortfolio';
+// import ContactUs from '../views/ContactUs';
 
 
 
